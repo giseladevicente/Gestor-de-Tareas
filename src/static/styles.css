@@ -1,0 +1,25 @@
+  body {
+    background-color:#f9ae92;
+  }
+  
+  main {
+    flex: 1;
+  } 
+
+  footer {
+    background-color: #f4c9b9;
+  }
+
+  nav {
+    background-color: #d2691e;
+  }
+
+  .button {
+    background-color: #803D3B;
+    border-color: #b9524f;
+    border-width: 5px;
+  }
+
+  .nav-link:hover {
+    color: #00f;
+  }
