@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
-import os
+
 
 from config import *
 
@@ -13,7 +13,7 @@ app.config.from_object('config') # importa todas las variables de configuración
 def index():
     # Conexión con MySQL
     cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM tareas ORDER BY id ASC')
+    cur.execute('SELECT * FROM tareas')
     tareas = cur.fetchall()
     cur.close()
     return render_template('tareas/index.html', tareas=tareas)
