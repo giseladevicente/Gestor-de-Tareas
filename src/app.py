@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
-
-
 from config import *
 
+# Instancias 
 app = Flask(__name__)
 mysql = MySQL(app)
 
-app.config.from_object('config') # importa todas las variables de configuración definidas en config.py a la aplicación Flask,
+app.config.from_object('config') # importa todas las variables de configuración definidas en config.py a la aplicación Flask
 
 @app.route('/')
 def index():
@@ -18,7 +17,7 @@ def index():
     cur.close()
     return render_template('tareas/index.html', tareas=tareas)
 
-
+# Nueva tarea
 @app.route('/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'POST':
@@ -36,7 +35,7 @@ def create():
     return render_template('tareas/create.html')
 
 
-
+# Editar
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit(id):
     cur = mysql.connection.cursor()
@@ -58,7 +57,7 @@ def edit(id):
     return render_template('tareas/edit.html', tarea=tarea)
 
 
-
+# Eliminar
 @app.route('/delete/<int:id>')
 def delete(id):
     cur = mysql.connection.cursor()
